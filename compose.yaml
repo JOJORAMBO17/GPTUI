@@ -9,8 +9,13 @@ services:
     networks:
       - gptui
     volumes:
-      - ~/.ssh:/root/.ssh
+      - gptui:/var/www/vite
+      - ~/.ssh:/root/.ssh:ro
 
 networks:
+  gptui:
+    name: gptui
+
+volumes:
   gptui:
     name: gptui
