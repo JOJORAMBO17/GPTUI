@@ -1,0 +1,16 @@
+name: gptui
+
+services:
+  gptui:
+    image: gptui
+    build: .
+    container_name: gptui
+    restart: always
+    networks:
+      - gptui
+    volumes:
+      - ~/.ssh:/root/.ssh
+
+networks:
+  gptui:
+    name: gptui
