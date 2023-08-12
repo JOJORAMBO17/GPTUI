@@ -11,7 +11,8 @@ FROM base as builder
 WORKDIR /var/www
 RUN pnpm create vite vite --template vue-ts && \
   cd vite && \
-  pnpm install
+  pnpm install &&\
+  pnpm config set store-dir /root/.local/share/pnpm/store/v3 --global
 
 FROM builder as dev
 WORKDIR /var/www/vite
