@@ -3,7 +3,9 @@ name: gptui
 services:
   gptui:
     image: gptui
-    build: .
+    build:
+      context: .
+      target: dev
     container_name: gptui
     restart: always
     networks:
