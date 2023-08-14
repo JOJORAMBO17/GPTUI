@@ -8,11 +8,11 @@ RUN apk update && \
   npm i -g pnpm
 
 FROM base as builder
-WORKDIR /var/www
+WORKDIR /home/node
 RUN pnpm create vite vite --template vue-ts
 
 FROM builder as dev
-WORKDIR /var/www/vite
+WORKDIR /home/node/vite
 COPY . .
 RUN pnpm install
 CMD [ "pnpm", "run", "dev" ]

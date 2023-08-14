@@ -11,7 +11,7 @@ services:
     networks:
       - gptui
     volumes:
-      - gptui:/var/www/vite
+      - gptui:/home/node/vite
       - ~/.ssh:/root/.ssh:ro
 
 networks:
