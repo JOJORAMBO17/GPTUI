@@ -14,5 +14,6 @@ RUN pnpm create vite vite --template vue-ts
 FROM builder as dev
 WORKDIR /home/node/vite
 COPY . .
+ENV PNPM_HOME=/home/node/vite/.pnpm-store
 RUN pnpm install
 CMD [ "pnpm", "run", "dev" ]
