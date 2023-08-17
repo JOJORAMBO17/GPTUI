@@ -5,9 +5,12 @@ RUN apk update && \
   cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
   apk del tzdata && \
   docker-php-ext-install -j$(nproc) zip intl mbstring mysqli pdo_mysql exif pcntl bcmath sockets gd && \
-  docker-php-ext-configure gd --with-webp=/usr/include/webp --with-jpeg=/usr/include --with-freetype=/usr/include/freetype2
-RUN echo yes | pecl install -o -f igbinary redis swoole && \
+  docker-php-ext-configure gd --with-webp=/usr/include/webp --with-jpeg=/usr/include --with-freetype=/usr/include/freetype2 && \
+  echo yes | pecl install -o -f igbinary redis swoole && \
   docker-php-ext-enable igbinary redis swoole && \
-  rm -rf /tmp/pear
+  rm -rf /tmp/pear && \
+  curl -L -o composer https://getcomposer.org/download/2.5.8/composer.phar && \
+  chmod +x composer && \
+  mv composer /usr/local/bin/composer
 EXPOSE 9000
 CMD ["php-fpm"]
