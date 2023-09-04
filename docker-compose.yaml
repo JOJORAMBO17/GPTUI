@@ -3,15 +3,13 @@ name: gptui
 services:
   gptui:
     image: gptui
-    build:
-      context: .
-      target: builder
+    build: .
     container_name: gptui
     restart: always
     networks:
       - gptui
     volumes:
-      - .:/home/node/vite
+      - gptui:/home/node/vite
       - ~/.ssh:/root/.ssh:ro
     ports:
       - 5173:5173
