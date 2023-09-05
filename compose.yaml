@@ -1,0 +1,23 @@
+name: gptui
+
+services:
+  gptui:
+    image: gptui
+    build:
+      context: .
+      target: dev
+    container_name: gptui
+    restart: always
+    # 第一次运行docker compose up -d时取消下面两行的注释，并且修改上面的target为app
+    # tty: true
+    # working_dir: /home/node/vite
+    volumes:
+      - .:/home/node/vite
+    networks:
+      - gptui
+    ports:
+      - 5173:5173
+
+networks:
+  gptui:
+    name: gptui

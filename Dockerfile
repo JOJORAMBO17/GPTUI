@@ -11,9 +11,10 @@ FROM base as builder
 WORKDIR /home/node
 RUN pnpm create vite vite --template vue-ts
 
-FROM builder as dev
+FROM builder as app
 WORKDIR /home/node/vite
-COPY . .
-ENV PNPM_HOME=/home/node/vite/.pnpm-store
 RUN pnpm install
+
+FROM base as dev
+WORKDIR /home/node/vite
 CMD [ "pnpm", "run", "dev" ]
