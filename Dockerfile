@@ -1,7 +1,7 @@
 FROM node:alpine as base
 RUN apk update && \
   apk upgrade && \
-  apk add --no-cache tzdata git openssh && \
+  apk add --no-cache tzdata && \
   cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
   apk del tzdata && \
   npm i -g npm@latest && \
